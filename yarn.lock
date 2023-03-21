@@ -200,6 +200,11 @@
     "@discordjs/node-pre-gyp" "^0.4.4"
     node-addon-api "^5.0.0"
 
+"@eshaz/web-worker@1.2.0":
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/@eshaz/web-worker/-/web-worker-1.2.0.tgz#a71c47e63c3325c227c619c217e3982578bde951"
+  integrity sha512-HWobmNKFZ8eARo39vEjkviTIISudgzrTyAqab9pOB/qNfnUPIUUMZv6+eEUUfXnkqWCLS3zreTn9YzaRvO8vIA==
+
 "@eslint/eslintrc@^0.2.1":
   version "0.2.1"
   resolved "https://registry.yarnpkg.com/@eslint/eslintrc/-/eslintrc-0.2.1.tgz#f72069c330461a06684d119384435e12a5d76e3c"
@@ -299,6 +304,13 @@
   version "1.1.2"
   resolved "https://registry.yarnpkg.com/@ungap/promise-all-settled/-/promise-all-settled-1.1.2.tgz#aa58042711d6e3275dd37dc597e5d31e8c290a44"
   integrity sha512-sL/cEvJWAnClXw0wHk85/2L0G6Sj8UB0Ctc1TEMbKSsmpRosqhwj9gWgFRZSrBr2f9tiXISwNhCPmlfqUqyb9Q==
+
+"@wasm-audio-decoders/common@7.0.0":
+  version "7.0.0"
+  resolved "https://registry.yarnpkg.com/@wasm-audio-decoders/common/-/common-7.0.0.tgz#80b8e45e894d31c22c9d2e52dc947d4d7cb3e1b3"
+  integrity sha512-KG5Cua//BlzyzZDoOj4iPjD7cu3jWIbtG3KxU2hbbWqYc4J5tWG+g7oDtbYhv61IPf2tcAMXFfucsYuKOB5WWg==
+  dependencies:
+    "@eshaz/web-worker" "1.2.0"
 
 abbrev@1:
   version "1.1.1"
@@ -3137,6 +3149,13 @@ optionator@^0.9.1:
     prelude-ls "^1.2.1"
     type-check "^0.4.0"
     word-wrap "^1.2.3"
+
+opus-decoder@^0.6.4:
+  version "0.6.4"
+  resolved "https://registry.yarnpkg.com/opus-decoder/-/opus-decoder-0.6.4.tgz#adb55885b702aaeaab7dee3272df512d26dbde74"
+  integrity sha512-NPDV1YHyJyp3p1J2CkG/Gayxtcl9aIp/MSzEtMgTkPt57UgcW5qx0L3f/iz/2AgudBC4ixV7z2s+FBcBl7S/9Q==
+  dependencies:
+    "@wasm-audio-decoders/common" "7.0.0"
 
 ordered-read-streams@^1.0.0:
   version "1.0.1"
