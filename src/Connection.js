@@ -3,18 +3,19 @@ const Protobuf = require('./Protobuf')
 const Promise = require('bluebird')
 const EventEmitter = require('events').EventEmitter
 const OpusEncoder = require('@discordjs/opus').OpusEncoder
-import { OpusDecoder } from 'opus-decoder';
+const { OpusDecoder } = import("opus-decoder")
 const Constants = require('./Constants')
 const Util = require('./Util')
 
 class Connection extends EventEmitter {
-    constructor(options) {
+    async constructor(options) {
         super()
 
         this.options = options;
         this.opusEncoder = new OpusEncoder(Constants.Audio.sampleRate, 1)
         this.currentEncoder = this.opusEncoder
 	this.currentDecoder = new OpusDecoder()
+	await this.currentDecoder.ready();
         this.codec = Connection.codec().Opus
         this.voiceSequence = 0
         this.codecWarningShown = {};
