@@ -152,7 +152,7 @@ class Connection extends EventEmitter {
 
         //console.debug("\tOPUS DATA LENGTH:" + opusData.length + ' DATA:', opusData);
 
-        const decoded = this.opusDecoder.decodeFrame(opusData);
+        const decoded = this.opusDecoder.decode(opusData, 480);
         //console.debug("\tDECODED DATA LENGTH:" + decoded.length + ' DATA:', decoded);
 
         const voiceData = {
