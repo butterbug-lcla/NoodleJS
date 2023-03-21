@@ -96,10 +96,6 @@ class Client extends EventEmitter {
         })
     }
 
-    async init() {
-	await this.connection.init()
-    }
-
     /**
      * The ping routine for the client to keep the connection alive
      * @private

@@ -2,8 +2,7 @@ const tls = require('tls');
 const Protobuf = require('./Protobuf')
 const Promise = require('bluebird')
 const EventEmitter = require('events').EventEmitter
-const OpusEncoder = require('@discordjs/opus').OpusEncoder
-const OpusDecoder = import("opus-decoder")
+const { OpusEncoder, OpusDecoder, OpusApplication } = require("audify");
 const Constants = require('./Constants')
 const Util = require('./Util')
  
@@ -12,19 +11,14 @@ class Connection extends EventEmitter {
         super()
 
         this.options = options;
-        this.opusEncoder = new OpusEncoder(Constants.Audio.sampleRate, 1)
+	this.opusEncoder = new OpusEncoder(Constants.Audio.sampleRate, 1, OpusApplication.OPUS_APPLICATION_AUDIO);
+	this.opusDecoder = new OpusDecoder(Constants.Audio.sampleRate, 1);
         this.currentEncoder = this.opusEncoder
         this.codec = Connection.codec().Opus
         this.voiceSequence = 0
-	this.opusDecoder = null
         this.codecWarningShown = {};
     }
 
-    async init() {
-	const opusDecoder = await OpusDecoder;
-	this.opusDecoder = new opusDecoder.OpusDecoder();
-    }
-    
     connect() {
         new Protobuf().then((protobuf) => {
             this.protobuf = protobuf
@@ -175,7 +169,7 @@ class Connection extends EventEmitter {
     }
 
     writeAudio(packet, whisperTarget, codec, voiceSequence, final) {
-        packet = this.currentEncoder.encode(packet)
+        packet = this.currentEncoder.encode(packet, 480)
 
         const type = codec === Connection.codec().Opus ? 4 : 0
         const target = whisperTarget || 0

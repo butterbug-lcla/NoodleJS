@@ -9,7 +9,7 @@ class ServerSync extends AbstractHandler {
         info.maximumBitrate = data.maxBandwidth
         if (data.maxBandwidth != null) {
             const bitrate = Util.adjustNetworkBandwidth(data.maxBandwidth)
-            this.client.connection.opusEncoder.setBitrate(bitrate)
+            // this.client.connection.opusEncoder.setBitrate(bitrate)
         }
 
         this.client.synced = true
