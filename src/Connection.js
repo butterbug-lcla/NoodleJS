@@ -3,7 +3,7 @@ const Protobuf = require('./Protobuf')
 const Promise = require('bluebird')
 const EventEmitter = require('events').EventEmitter
 const OpusEncoder = require('@discordjs/opus').OpusEncoder
-const OpusDecoder = import('opus-decoder')
+const { OpusDecoder } = await import('opus-decoder')
 const Constants = require('./Constants')
 const Util = require('./Util')
 
