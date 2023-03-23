@@ -22,15 +22,8 @@ class Dispatcher extends EventEmitter {
         this.dispatchStream.once('finish', () => {
             this.emit('end')
         })
-        this.command = ffmpeg(unknown)
-            .output(this.dispatchStream)
-            .audioFrequency(48000)
-            .audioChannels(1)
-            .format('s16le')
-            .on('error', (e) => {
-                this.emit('error', e)
-            })
-        this.command.run()
+        unknown.pipe(this.dispatchStream)
+        // this.command.run()
     }
 
     setVolume(volume) {
@@ -47,8 +40,8 @@ class Dispatcher extends EventEmitter {
     }
 
     stop() {
-        if (this.command)
-            this.command.kill()
+        // if (this.command)
+        //     this.command.kill()
     }
 }
 
